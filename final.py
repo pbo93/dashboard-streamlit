@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+import requests
 
 st.set_page_config(page_title="FIAP LUB")
 
@@ -71,14 +71,24 @@ with st.container():
   st.title('Calculadora de preço :blue[petróleo]:')
 #funçao para carregar os dados
 #ele armazena no navegador as informações que estamos usando
-@st.cache_data
-def carregar_dados():
-  #aqui precisa exportar o df_out2 versão final para um arquivo CSV para termos a base tratada e poder plotar os gráficos no streamlit
-  tabela = pd.read_csv("df_out2.csv")
-  return tabela
+url = 'https://github.com/pbo93/dashboard-streamlit/blob/main/df_out2.csv'
 
+# Função para carregar o DataFrame
+@st.cache_data # Isso adiciona cache para evitar recarregar o DataFrame desnecessariamente
+def carregar_dados():
+# Use o módulo requests para obter o conteúdo do arquivo no GitHub  
+  response = requests.get(url)
+# Se a solicitação for bem-sucedida (código de status 200), leia o CSV
+  if response.status_code == 200:
+        tabela = pd.read_csv("df_out2.csv")
+        return tabela
+  else:
+        st.error(f"Erro ao obter o arquivo. Código de status: {response.status_code}")
+        return None
 with st.container():
   dados = carregar_dados()
+  if dados is not None:
+    st.write("DataFrame carregado do GitHub:")
   #para plotar o gráfico de linhas
   st.line_chart(dados, x="Data", y="preco_petroleo_WTI")
 
