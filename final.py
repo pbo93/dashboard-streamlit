@@ -92,7 +92,7 @@ with st.container():
   #para plotar o gráfico de linhas
   st.line_chart(dados, x="Data", y="preco_petroleo_WTI")
 
-with st.conteiner():
+with st.container():
   st.write("---")
   st.subheader("4 Situações que ocasionaram a variação do preço do petróleo")
   st.title("1º 2008")
@@ -108,7 +108,7 @@ with st.conteiner():
   st.write("Guerra da Ucrânia, União Européia (UE)  corta cerca de 90%  de sua importação de petróleo russo e a compra de  fornecedores de petróleo mais distantantes pela UE aumentou o custo do frete; são alguns fatores que fizeram o petróleo bruto encarecer Valor $80,00 brarril (aproximado)")
   st.write("Fonte: [CNN, 2022](https://www.cnnbrasil.com.br/economia/3-razoes-pelas-quais-o-preco-do-petroleo-deve-seguir-alto-segundo-especialistas/)")
 
-with st.conteiner():
+with st.container():
   st.write("---")
   st.subheader("5 Modelos de Machine Learning")
   st.title("Teste 01")
@@ -116,4 +116,23 @@ with st.conteiner():
   st.title("Teste 02")
   st.write("Método ARIMA [clique aqui para acessar o notebook](https://colab.research.google.com/drive/1E0LWv68qrmLoUM8Jtzj5QNSkvqW7ZqPh#scrollTo=dvgr-RlRWeIc)")
 
-"""No terminal do pycharm ou outra IDE e executar -> streamlit run "nome do arquivo".py"""
+import streamlit as st
+import tensorflow as tf
+
+# Carregue o modelo
+model = tf.keras.models.load_model('C:/Users/pbo93/venv/mlredeneural.keras')
+
+# Adicione elementos interativos para entrada de dados, se necessário
+user_input = st.text_input("Digite alguma entrada: ")
+
+# Faça previsões usando o modelo
+if st.button("Fazer Previsão"):
+    # Exemplo de pré-processamento simples (substitua com a lógica real do seu projeto)
+    # Converta a entrada do usuário para um formato adequado
+    processed_input = [float(user_input)]  
+
+    # Execute a previsão usando o modelo carregado
+    prediction = model.predict(processed_input)
+
+    # Exiba a previsão
+    st.write(f"Previsão: {prediction}")
