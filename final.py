@@ -4,6 +4,7 @@ import requests
 
 st.set_page_config(page_title="FIAP LUB")
 
+
 #nesse container vão ter esses 4 objetos de texto no site
 with st.container():
   st.title('Sobre :blue[nós] :loudspeaker::')
@@ -91,10 +92,11 @@ with st.container():
     st.write("DataFrame carregado do GitHub:")
   #para plotar o gráfico de linhas
   st.line_chart(dados, x="Data", y="preco_petroleo_WTI")
+  st.write("Esse grafico de linha ilustra a variação do preço do petroleo WIT ao longo dos anos")
 
 with st.container():
   st.write("---")
-  st.subheader("4 Situações que ocasionaram a variação do preço do petróleo")
+  st.subheader("4. Situações que ocasionaram a variação do preço do petróleo")
   st.title("1º 2008")
   st.write("Tensões geopolíticas no Irã, na Nigéria e no Paquistão; de um complexo equilíbrio entre uma oferta em declínio e uma demanda em alta, devido aos países emergentes e à China; e de uma forte especulação em torno de todas as commodities. Valor $134,00 barril (aproximado)")
   st.write("Fonte: [G1, 2008](https://g1.globo.com/Noticias/Economia_Negocios/0,,MUL940136-9356,00-O+ANO+EM+QUE+O+PETROLEO+ENLOUQUECEU+O+MERCADO.html)")
@@ -110,26 +112,46 @@ with st.container():
 
 with st.container():
   st.write("---")
-  st.subheader("5 Modelos de Machine Learning")
+  st.subheader("5. Modelos de Machine Learning")
+  st.write("Foram desenvolvidos 2 modelos de ML para comparar qual melhor se comporta para conseguir gerar a previsão que precisamos")
   st.title("Teste 01")
   st.write("Método: Rede Neurais Recorrentes [clique aqui para acessar o notebook](https://colab.research.google.com/drive/1L0wGHaLSx-aghZPgAoJjSC_SOo8DNsd8?usp=sharing)")
   st.title("Teste 02")
   st.write("Método ARIMA [clique aqui para acessar o notebook](https://colab.research.google.com/drive/1E0LWv68qrmLoUM8Jtzj5QNSkvqW7ZqPh#scrollTo=dvgr-RlRWeIc)")
-
+  st.write("O modelo escolhido foi o modelo do teste 01 o Método: Rede Neurais Recorrentes por aprensentar melhores resultados nos testes realizados")
 import streamlit as st
 import tensorflow as tf
 
+with st.container():
+  st.write("---")
+  st.subheader("Deploy do Método de :blue[Rede Neurais Recorrentes]")
+  st.write("Abaixo é possivel realizar a previsão do preço do petróleo wit selecionando a data desejada e clicando no botão Fazer Previsão")
 # Carregue o modelo
 model = tf.keras.models.load_model('C:/Users/pbo93/venv/mlredeneural.keras')
 
 # Adicione elementos interativos para entrada de dados, se necessário
-user_input = st.text_input("Digite alguma entrada: ")
+# Criando um exemplo de DataFrame com datas
+df = pd.DataFrame({
+    'Data': pd.date_range(start='2023-12-30', end='2024-01-03')
+})
+
+# Adicionando um combobox (radio button) ao Streamlit
+selected_date = st.radio(
+    'Escolha uma data:',
+    df['Data'].dt.strftime('%Y-%m-%d').tolist()  # Converte as datas para o formato desejado
+)
+
+# Exibindo a data escolhida
+st.write('Data escolhida:', selected_date)
 
 # Faça previsões usando o modelo
 if st.button("Fazer Previsão"):
+    # Converte a data selecionada para timestamp (número de segundos desde a época)
+    timestamp_selected_date = pd.to_datetime(selected_date).timestamp()
+
     # Exemplo de pré-processamento simples (substitua com a lógica real do seu projeto)
-    # Converta a entrada do usuário para um formato adequado
-    processed_input = [float(user_input)]  
+    # Converta a entrada do usuário (timestamp) para um formato adequado
+    processed_input = [float(timestamp_selected_date)]
 
     # Execute a previsão usando o modelo carregado
     prediction = model.predict(processed_input)
