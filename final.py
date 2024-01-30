@@ -1,17 +1,13 @@
 import streamlit as st
 import pandas as pd
-import requests
+
 
 st.set_page_config(page_title="FIAP LUB")
-
-import streamlit as st
-import tensorflow as tf
 
 with st.container():
   st.subheader("Deploy do Método de :blue[Rede Neurais Recorrentes]")
   st.write("Abaixo é possivel realizar a previsão do preço do petróleo wit selecionando a data desejada e clicando no botão Fazer Previsão")
-# Carregue o modelo
-model = tf.keras.models.load_model('C:/Users/pbo93/venv/mlredeneural.keras')
+
 
 # Adicione elementos interativos para entrada de dados, se necessário
 # Criando um exemplo de DataFrame com datas
