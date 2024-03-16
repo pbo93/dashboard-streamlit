@@ -1,2 +1,3 @@
-# dashboard-streamlit
-Dashboard no streamlit para a atividade propósta para a conclusão do módulo 4 do DTAT
+# dashboard-streamlit para o Datathon
+
+Dashboard no streamlit para a atividade propósta para a conclusão do curso
