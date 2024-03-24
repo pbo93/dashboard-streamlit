@@ -3,6 +3,18 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 
+# CSS para alterar a cor de fundo da página
+
+fundo_laranja = """
+<style>
+    .stApp {
+        background-color: #FFA500;
+    }
+</style>
+"""
+
+st.markdown(fundo_laranja, unsafe_allow_html=True) 
+
 #imagem header
 from PIL import Image
 import streamlit as st
@@ -10,14 +22,14 @@ import streamlit as st
 # Carregar a imagem
 
 # Carregar a primeira imagem
-path1 = 'C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Escola sem fundo.png'
+path1 = 'Escola sem fundo.png'
 image1 = Image.open(path1)
 largura_desejada = 240
 altura_desejada = 180
 image_resized1 = image1.resize((largura_desejada, altura_desejada))
 
 # Carregar a segunda imagem
-path2 = 'C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Bolsa de estudo.png'
+path2 = 'Bolsa de estudo.png'
 image2 = Image.open(path2)
 largura_desejada = 200
 altura_desejada = 180
@@ -40,16 +52,16 @@ st.markdown(styled_text, unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Chapeu.png")
+      st.image("Chapeu.png")
 
 with col2:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Mãos.png")
+      st.image("Mãos.png")
 
 with col3:
-   st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Teclado.png")
+   st.image("Teclado.png")
    
 with col4:
-    st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Trofeu.png")
+    st.image("Trofeu.png")
 
 
 #tabela
@@ -111,13 +123,13 @@ st.markdown(styled_text, unsafe_allow_html=True)
 col1, col2, col3 = st.columns(3)
 
 with col1:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Ckeck.png")
+      st.image("Ckeck.png")
 
 with col2:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Ckeck.png")
+      st.image("Ckeck.png")
 
 with col3:
-   st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Ckeck.png")
+   st.image("Ckeck.png")
 
 html_table = """
   <tr>
@@ -142,16 +154,16 @@ st.markdown(styled_text, unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/seta.png")
+      st.image("seta.png")
 
 with col2:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/seta.png")
+      st.image("seta.png")
 
 with col3:
-   st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/seta.png")
+   st.image("seta.png")
    
 with col4:
-    st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/seta.png")
+    st.image("seta.png")
 
 html_table = """
   <tr>
@@ -200,7 +212,7 @@ styled_text = f"<h1 style='text-align: center; color: white;'>{texto}</h1>"
 st.markdown(styled_text, unsafe_allow_html=True)
 
 #Imagem
-path = 'C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/jovens.jpg'
+path = 'jovens.jpg'
 image = Image.open(path)
 largura_desejada = 50  # Defina a largura desejada em pixels
 st.image(image, width=largura_desejada, use_column_width='always')
@@ -301,16 +313,16 @@ st.markdown(styled_text, unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Fiap.png")
+      st.image("Fiap.png")
 
 with col2:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/ESPM.png")
+      st.image("ESPM.png")
 
 with col3:
-   st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Origem.png")
+   st.image("Origem.png")
    
 with col4:
-    st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Mattos.png")
+    st.image("Mattos.png")
     
     st.write("")
     st.write("")
@@ -334,13 +346,13 @@ st.markdown(html_table, unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Selo 1.png")
+      st.image("Selo 1.png")
 
 with col2:
-      st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Selo 2.png")
+      st.image("Selo 2.png")
 
 with col3:
-   st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Selo 3.png")
+      st.image("Selo 3.png")
    
 with col4:
-    st.image("C:/Users/user/Desktop/FIAP/Fase 5/Datathon/Landpage/Selo 4.png")
+      st.image("Selo 4.png")
